@@ -2,15 +2,15 @@
   "name": "omdb-bot",
   "version": "0.2.0",
   "description": "Finds infos from IMDB via OMDB API.",
-  "main": "./src/server.js",
+  "main": "./src/index.js",
   "scripts": {
     "commit": "npx git-cz",
     "docs": "npx projectz compile",
     "lint": "npx standard",
     "lint:fix": "npx standard --fix",
-    "start": "node ./src/server.js",
+    "start": "node ./src/index.js",
     "start:dev": "nodemon",
-    "test": "lab -t 100",
+    "test": "lab -a @hapi/code",
     "test:cov": "lab -r html -o coverage.html"
   },
   "nodemonConfig": {
@@ -42,6 +42,7 @@
     }
   },
   "devDependencies": {
+    "@hapi/code": "^5.3.1",
     "@hapi/lab": "^18.1.1",
     "commitizen": "^3.0.7",
     "cz-conventional-changelog": "^2.1.0",
