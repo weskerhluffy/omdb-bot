@@ -2,6 +2,7 @@
 
 import Wreck from "@hapi/wreck";
 import Joi from "@hapi/joi";
+import {posterCall} from "./poster.js";
 
 let movieCall = async (key, title) => {
   const { req, res, payload } = await Wreck.get(`http://www.omdbapi.com/?apikey=${key}&t=${title}`)
@@ -23,13 +24,19 @@ const plugin = {
         }
       },
       handler: async (request, h) => {
-        let findMovie
+        let findMovieStr;
         try {
-          findMovie = await movieCall(process.env.API_KEY, request.params.title)
+          findMovieStr = await movieCall(process.env.API_KEY, request.params.title)
         } catch (err) {
           console.error(err)
         }
-        return h.response(findMovie).type('application/json')
+        let findMovie=JSON.parse(findMovieStr);
+        console.log(`HEAGTMP imdb name ${findMovie}`);
+        console.log(`HEAGTMP imdb name ${findMovie.Type}`);
+        console.log(`HEAGTMP imdb idd ${findMovie.imdbID}`);
+        let poster=await posterCall(process.env.API_KEY, findMovie.imdbID);
+//        return h.response(findMovie).type('application/json')
+        return h.response(poster).type('image/jpeg')
       }
     })
   }

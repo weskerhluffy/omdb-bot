@@ -2,8 +2,9 @@
 
 import Wreck from "@hapi/wreck";
 import Joi from "@hapi/joi";
-
-let posterCall = async (api, id) => {
+// XXX: https://hackernoon.com/import-export-default-require-commandjs-javascript-nodejs-es6-vs-cheatsheet-different-tutorial-example-5a321738b50f
+// XXX: https://humanwhocodes.com/blog/2019/01/stop-using-default-exports-javascript-module/
+export let posterCall = async (api, id) => {
   const { req, res, payload } = await Wreck.get(`http://img.omdbapi.com/?apikey=${api}&i=${id}`)
   return payload
 }
@@ -36,5 +37,4 @@ const plugin = {
 }
 
 export default plugin;
-
 

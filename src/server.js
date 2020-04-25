@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 // XXX: https://medium.com/@etherealm/named-export-vs-default-export-in-es6-affb483a0910
 // XXX: https://xperimentalhamid.com/how-do-i/fix-cannot-use-import-statement-outside-a-module/
+// XXX: https://stackoverflow.com/questions/26621317/how-to-make-hapi-auto-reload-app-during-developing
 
 import Hapi from "hapi";
 import Boom from "@hapi/boom";
