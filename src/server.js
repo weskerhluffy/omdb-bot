@@ -1,16 +1,21 @@
 'use strict'
 
-require('dotenv').config()
+import dotenv from "dotenv";
+dotenv.config();
+// XXX: https://medium.com/@etherealm/named-export-vs-default-export-in-es6-affb483a0910
+// XXX: https://xperimentalhamid.com/how-do-i/fix-cannot-use-import-statement-outside-a-module/
 
-const Hapi = require('hapi')
-const Boom = require('@hapi/boom')
+import Hapi from "hapi";
+import Boom from "@hapi/boom";
+import movie from "./api/movie.js";
+import poster from "./api/poster.js";
 
 const server = Hapi.server({
   port: 3030,
   host: 'localhost'
 })
 const addAPIs = async () => {
-  await server.register([require('./api/movie'), require('./api/poster')])
+  await server.register([movie, poster])
 }
 const init = async () => {
   server.route({

@@ -1,7 +1,7 @@
 'use strict'
 
-const Wreck = require('@hapi/wreck')
-const Joi = require('@hapi/joi')
+import Wreck from "@hapi/wreck";
+import Joi from "@hapi/joi";
 
 let posterCall = async (api, id) => {
   const { req, res, payload } = await Wreck.get(`http://img.omdbapi.com/?apikey=${api}&i=${id}`)
@@ -35,4 +35,6 @@ const plugin = {
   }
 }
 
-module.exports = plugin
+export default plugin;
+
+

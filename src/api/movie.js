@@ -1,7 +1,7 @@
 'use strict'
 
-const Wreck = require('@hapi/wreck')
-const Joi = require('@hapi/joi')
+import Wreck from "@hapi/wreck";
+import Joi from "@hapi/joi";
 
 let movieCall = async (key, title) => {
   const { req, res, payload } = await Wreck.get(`http://www.omdbapi.com/?apikey=${key}&t=${title}`)
@@ -35,4 +35,5 @@ const plugin = {
   }
 }
 
-module.exports = plugin
+//module.exports.default = plugin;
+export default plugin;
